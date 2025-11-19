@@ -9,8 +9,9 @@ class Cargo(Model):
         return self.nome
 
     class Meta:
+        db_table = '"escala"."cargo"'
         verbose_name = 'Cargo'
         verbose_name_plural = 'Cargos'
 
 
-register(model=Cargo, table_name='cargo_history')
+register(model=Cargo, table_name='"escala"."historico_cargo"')
