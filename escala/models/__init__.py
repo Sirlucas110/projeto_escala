@@ -1,0 +1,4 @@
+from .cargo import Cargo
+from .escala import Escala
+from .instrumento import Instrumento
+from .pessoa import Pessoa
