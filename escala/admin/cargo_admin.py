@@ -4,7 +4,7 @@ from simple_history.admin import SimpleHistoryAdmin
 
 
 class CargoAdmin(SimpleHistoryAdmin):
-    list_display = ['nome']
+    list_display = ['id', 'nome']
 
 
 admin.site.register(Cargo, CargoAdmin)

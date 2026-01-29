@@ -3,13 +3,8 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
     initial = True
-    dependencies = [
-
-    ]
+    dependencies = []
 
     operations = [
-        migrations.RunSQL(
-            sql='CREATE SCHEMA IF NOT EXISTS escala;',
-            reverse_sql='DROP SCHEMA IF EXISTS escala CASCADE'
-        )
+        migrations.RunSQL(sql='CREATE SCHEMA IF NOT EXISTS escala;', reverse_sql='DROP SCHEMA IF EXISTS escala CASCADE')
     ]

@@ -1,20 +1,17 @@
-from django.db.models import PROTECT, CharField, EmailField, ForeignKey, Model
+from django.db.models import CharField, EmailField, Model, ManyToManyField
 
-from escala.models.cargo import Cargo
+
 from escala.models.instrumento import Instrumento
 
 from simple_history import register
 
 
 class Pessoa(Model):
-    instrumento = ForeignKey(
+    instrumento = ManyToManyField(
         to=Instrumento,
-        on_delete=PROTECT,
         related_name='pessoas_que_tocam',
         blank=True,
-        null=True,
     )
-    cargo = ForeignKey(to=Cargo, on_delete=PROTECT, related_name='pessoas_com_cargo')
     nome = CharField(verbose_name='Nome', max_length=255)
     email = EmailField(verbose_name='Email')
     telefone = CharField(verbose_name='Telefone')

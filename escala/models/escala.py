@@ -1,4 +1,4 @@
-from django.db.models import PROTECT, CharField, DateField, ForeignKey, Model
+from django.db.models import CharField, DateField, Model, ManyToManyField, ForeignKey, PROTECT
 
 from escala.models.cargo import Cargo
 from escala.models.pessoa import Pessoa
@@ -7,7 +7,7 @@ from simple_history import register
 
 class Escala(Model):
     pessoa = ForeignKey(to=Pessoa, on_delete=PROTECT, related_name='escalas')
-    cargo = ForeignKey(to=Cargo, on_delete=PROTECT, related_name='escalas')
+    cargos = ManyToManyField(Cargo, related_name='escalas')
     data = DateField(verbose_name='Data')
     descricao = CharField(verbose_name='Descrição', max_length=255, blank=True, null=True)
 
