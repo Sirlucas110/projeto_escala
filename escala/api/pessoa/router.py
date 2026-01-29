@@ -30,14 +30,10 @@ def busca_pessoa_por_id(request, pessoa_id: int):
 @router_v1.post(path='/', response=PessoaSaidaPost, summary='Cria uma nova pessoa')
 def cria_uma_nova_pessoa(request, payload: PessoaEntradaPost):
     payload_dict = payload.dict()
-    instrumento_ids = payload_dict.pop('instrumento_ids', [])  # pode vir vazio
-    # cria a pessoa sem FK/M2M
     pessoa = Pessoa(**payload_dict)
     pessoa.full_clean()
     pessoa.save()
-    # seta o M2M
-    if instrumento_ids:
-        pessoa.instrumento.set(instrumento_ids)
+
 
     return {'id': pessoa.id}
 

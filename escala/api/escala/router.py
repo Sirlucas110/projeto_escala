@@ -38,6 +38,9 @@ def cria_uma_nova_escala(request, payload: EscalaEntradaPost):
 
     escala.cargos.set(payload.cargo_ids)
 
+    if payload.instrumento_ids:
+        escala.instrumento.set(payload.instrumento_ids)
+
     return {'id': escala.id}
 
 
@@ -51,6 +54,9 @@ def atualiza_uma_escala(request, escala_id: int, payload: EscalaEntradaPut):
     escala.save()
 
     escala.cargos.set(payload.cargo_ids)
+
+    if payload.instrumento_ids is not None:
+        escala.instrumento.set(payload.instrumento_ids)
 
     return {'success': True}
 

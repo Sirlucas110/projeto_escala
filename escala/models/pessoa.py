@@ -1,17 +1,11 @@
-from django.db.models import CharField, EmailField, Model, ManyToManyField
+from django.db.models import CharField, EmailField, Model
 
 
-from escala.models.instrumento import Instrumento
 
 from simple_history import register
 
 
 class Pessoa(Model):
-    instrumento = ManyToManyField(
-        to=Instrumento,
-        related_name='pessoas_que_tocam',
-        blank=True,
-    )
     nome = CharField(verbose_name='Nome', max_length=255)
     email = EmailField(verbose_name='Email')
     telefone = CharField(verbose_name='Telefone')

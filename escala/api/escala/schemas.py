@@ -1,6 +1,8 @@
+from typing import Optional
 from ninja import ModelSchema, Schema
 
 from escala.api.cargo.schemas import CargoSaidaGet
+from escala.api.instrumento.schemas import InstrumentoSaidaGet
 from escala.api.pessoa.schemas import PessoaSaidaGet
 from escala.models.escala import Escala
 
@@ -8,6 +10,7 @@ from escala.models.escala import Escala
 class EscalaSaidaGet(ModelSchema):
     pessoa: PessoaSaidaGet
     cargos: list[CargoSaidaGet]
+    instrumento: Optional[list[InstrumentoSaidaGet]] = None
 
     class Meta:
         model = Escala
@@ -17,6 +20,7 @@ class EscalaSaidaGet(ModelSchema):
 class EscalaEntradaPost(ModelSchema):
     cargo_ids: list[int]
     pessoa_id: int
+    instrumento_ids: Optional[list[int]] = []
     descricao: str | None = None
 
     class Meta:
@@ -31,6 +35,7 @@ class EscalaSaidaPost(Schema):
 class EscalaEntradaPut(ModelSchema):
     cargo_ids: list[int]
     pessoa_id: int
+    instrumento_ids: Optional[list[int]] = []
     descricao: str | None = None
 
     class Meta:
