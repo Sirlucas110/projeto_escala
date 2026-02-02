@@ -4,10 +4,8 @@ from escala.models import Pessoa
 
 
 class PessoaAdmin(SimpleHistoryAdmin):
-    list_display = ('id', 'nome', 'email', 'instrumentos')
+    list_display = ('id', 'nome', 'email', 'telefone')
 
-    def instrumentos(self, obj):
-        return ', '.join(inst.nome for inst in obj.instrumento.all())
 
 
 

@@ -2,7 +2,6 @@ from ninja import Router
 from django.shortcuts import get_object_or_404
 
 from escala.models.cargo import Cargo
-
 from .schemas import CargoEntradaPost, CargoSaidaGet, CargoSaidaPost, CargoSaidaDelete
 
 router_v1 = Router()
